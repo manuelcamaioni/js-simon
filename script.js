@@ -16,7 +16,7 @@
 
 
  const clock = setInterval(function(){
-    const countDownGoal = new Date('May 25, 2023 18:06:00').getTime();     
+    const countDownGoal = new Date('May 26, 2023 09:30:00').getTime();     
     const realTime = new Date().getTime();   
     let timeFrame = countDownGoal - realTime;
     const CDoperation = convertMsToTime(timeFrame, clock);

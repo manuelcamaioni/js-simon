@@ -19,18 +19,27 @@ const clock = setInterval(function(){
 const countDownGoal = new Date('May 26, 2023 09:30:00').getTime();     
 const realTime = new Date().getTime();   
 const timeFrame = countDownGoal - realTime;
-const milliseconds = timeFrame * 1000;
-const days = Math.floor(milliseconds / 1000 / 60 / 60 / 24);
-const hours = 
-
-
-const seconds = Math.floor(milliseconds / 1000);
-const minutes = Math.floor(seconds / 60);
-
-const days = Math.floor(hours / 24);
+const CDoperation = convertMsToTime(timeFrame);
 
 const countDownElement = document.getElementById('countdown');
 
-countDownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-clearInterval();
-}, 1000)
+countDownElement.innerHTML = `<span>${CDoperation}</span>`;
+
+}, 1000);
+
+function padTo2Digits(num) {
+    return num.toString().padStart(2, '0');
+}
+  
+function convertMsToTime(ms) {
+    let sec = Math.floor(ms / 1000);
+    let min = Math.floor(sec / 60);
+    let hrs = Math.floor(min / 60);
+    let d = Math.floor(hrs / 24);
+    sec = sec % 60;
+    min = min % 60;
+    hrs = hrs % 24;
+    d = d % 24;
+  
+    return `${padTo2Digits(d)}:${padTo2Digits(hrs)}:${padTo2Digits(min)}:${padTo2Digits(sec)}`;
+}

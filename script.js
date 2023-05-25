@@ -21,7 +21,7 @@
     let timeFrame = countDownGoal - realTime;
 
     const CDoperation = convertMsToTime(timeFrame, clock);
-    
+
     const countDownElement = document.getElementById('countdown');
 
     countDownElement.innerHTML = `<span>${CDoperation}</span>`;

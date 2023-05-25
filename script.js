@@ -17,9 +17,8 @@
 
  const clock = setInterval(function(){
     const countDownGoal = new Date('May 26, 2023 09:30:00').getTime();     
-    const realTime = new Date().getTime();   
+    const realTime = new Date().getTime();
     let timeFrame = countDownGoal - realTime;
-
     const CDoperation = convertMsToTime(timeFrame, clock);
 
     const countDownElement = document.getElementById('countdown');
@@ -43,6 +42,6 @@
         if(ms <= 300){
             clearInterval(interval);
         }
-        return `${padTo2Digits(d)}:${padTo2Digits(hrs)}:${padTo2Digits(min)}:${padTo2Digits(sec)}`;
+        return `${padTo2Digits(d)}d ${padTo2Digits(hrs)}hrs ${padTo2Digits(min)}min ${padTo2Digits(sec)}s`;
     }
     

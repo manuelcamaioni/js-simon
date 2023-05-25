@@ -15,31 +15,33 @@
 
 
 
-const clock = setInterval(function(){
-const countDownGoal = new Date('May 26, 2023 09:30:00').getTime();     
-const realTime = new Date().getTime();   
-const timeFrame = countDownGoal - realTime;
-const CDoperation = convertMsToTime(timeFrame);
+ const clock = setInterval(function(){
+    const countDownGoal = new Date('May 25, 2023 18:06:00').getTime();     
+    const realTime = new Date().getTime();   
+    let timeFrame = countDownGoal - realTime;
+    const CDoperation = convertMsToTime(timeFrame, clock);
+    const countDownElement = document.getElementById('countdown');
 
-const countDownElement = document.getElementById('countdown');
+    countDownElement.innerHTML = `<span>${CDoperation}</span>`;
+    }, 1000);
+    
+    function padTo2Digits(num) {
+        return num.toString().padStart(2, '0');
+    }
+      
+    function convertMsToTime(ms, interval) {
+        let sec = Math.floor(ms / 1000);
+        let min = Math.floor(sec / 60);
+        let hrs = Math.floor(min / 60);
+        let d = Math.floor(hrs / 24);
+        sec = sec % 60;
+        min = min % 60;
+        hrs = hrs % 24;
+        d = d % 24;
 
-countDownElement.innerHTML = `<span>${CDoperation}</span>`;
-
-}, 1000);
-
-function padTo2Digits(num) {
-    return num.toString().padStart(2, '0');
-}
-  
-function convertMsToTime(ms) {
-    let sec = Math.floor(ms / 1000);
-    let min = Math.floor(sec / 60);
-    let hrs = Math.floor(min / 60);
-    let d = Math.floor(hrs / 24);
-    sec = sec % 60;
-    min = min % 60;
-    hrs = hrs % 24;
-    d = d % 24;
-  
-    return `${padTo2Digits(d)}:${padTo2Digits(hrs)}:${padTo2Digits(min)}:${padTo2Digits(sec)}`;
-}
+        if(ms <= 300){
+            clearInterval(interval);
+        }
+        return `${padTo2Digits(d)}:${padTo2Digits(hrs)}:${padTo2Digits(min)}:${padTo2Digits(sec)}`;
+    }
+    

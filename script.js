@@ -12,31 +12,38 @@
 // Esistono dei metodi per trasformare una data in millisecondi?
 
  const clock = setInterval(function(){
-    const countDownGoal = new Date('May 26, 2023 09:30:00').getTime();     
-    const realTime = new Date().getTime();
-    let timeFrame = countDownGoal - realTime;
-    const CDoperation = convertMsToTime(timeFrame, clock);
+    const countDownGoal = new Date('May 26, 2023 09:30:00').getTime(); // get the timestamp (ms) between the assigned date and Jan 1 1970
+    const realTime = new Date().getTime(); // get timestamp of the current time
+    let timeSpan = countDownGoal - realTime; //existing distance between the countDownGoal timestamp and the current timestamp
+    const displayCountDown = convertToTime(timeSpan, clock); // initialized a variable that contains the function 
 
     const countDownElement = document.getElementById('countdown');
 
-    countDownElement.innerHTML = `<span>${CDoperation}</span>`;
+    countDownElement.innerHTML = `<span>${displayCountDown}</span>`;
     }, 998);
     
     function padTo2Digits(num) {
-        return num.toString().padStart(2, '0');
+        return num.toString().padStart(2, '0'); // faccio in modo che il numero convertito in stringa abbioa sempre due caratteri quando il valore e' minore di 10
     }
-    function convertMsToTime(ms, interval){
+    /**
+     * The function invoked in the setInterval function, at every iteration keeps track and update
+     * the converted variables(sec, min, hrs, and d) every 1000 ms
+     * @param {number} ms //time span that intercourse between countDownGoal and realTime
+     * @param {object} interval // variable that contains the setInterval function
+     * @returns converted ms in seconds, minutes, hours, and days with 2 characters
+     */
+    function convertToTime(ms, interval){
         let sec = Math.floor(ms / 1000);
         let min = Math.floor(sec / 60);
         let hrs = Math.floor(min / 60);
         let d = Math.floor(hrs / 24);
-        sec = sec % 60;
-        min = min % 60;
+        sec = sec % 60; // Updating sec with the remainder of 60 (x / 60 --> get the updated remainder at every interval)
+        min = min % 60; // Since the real time always get closer to the countDownGoal, the timeSpan value is bound to reduce
         hrs = hrs % 24;
         d = d % 24;
 
-        if(ms <= 300){
-            clearInterval(interval);
+        if(ms <= 300){ //exit condition to stop the setInterval
+            clearInterval(interval); 
         }
         return `${padTo2Digits(d)}d ${padTo2Digits(hrs)}hrs ${padTo2Digits(min)}min ${padTo2Digits(sec)}s`;
     }

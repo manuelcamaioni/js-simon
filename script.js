@@ -23,7 +23,7 @@
     const countDownElement = document.getElementById('countdown');
 
     countDownElement.innerHTML = `<span>${CDoperation}</span>`;
-    }, 1000);
+    }, 998);
     
     function padTo2Digits(num) {
         return num.toString().padStart(2, '0');
@@ -38,7 +38,7 @@
         min = min % 60;
         hrs = hrs % 24;
         d = d % 24;
-
+        
         if(ms <= 300){
             clearInterval(interval);
         }

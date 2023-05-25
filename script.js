@@ -10,10 +10,6 @@
 // Quanti millisecondi mi separano da domani alle 9:30?
 // Esiste un oggetto JS in grado di gestire le date?
 // Esistono dei metodi per trasformare una data in millisecondi?
- // timestamp return
- // timestamp return
-
-
 
  const clock = setInterval(function(){
     const countDownGoal = new Date('May 26, 2023 09:30:00').getTime();     

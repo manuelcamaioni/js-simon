@@ -5,7 +5,7 @@
 }
 
 body{
-    background-color: rgb(241, 169, 181);
+    background: linear-gradient(110deg, pink 40%, rgb(226, 42, 73) 40%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,14 +13,14 @@ body{
 }
 
 #countdown{
-    background-color: rgb(231, 60, 89);
+    background-color: rgb(175, 37, 90);
     padding: 1rem 2.5rem;
     border-radius: 1.5rem;
     font-size: 5rem;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 8px 8px rgba(0,0,0,0.23);
     color: white;
 }
 
 span{
-    text-shadow: 1px 1px 1px black;
+    text-shadow: 2px 1px 5px rgb(71, 16, 16);
 }

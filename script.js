@@ -19,11 +19,15 @@ const clock = setInterval(function(){
 const countDownGoal = new Date('May 26, 2023 09:30:00').getTime();     
 const realTime = new Date().getTime();   
 const timeFrame = countDownGoal - realTime;
-const milliseconds = timeFrame * 1000; 
-const seconds = Math.floor((milliseconds / 1000) % 60);
-const minutes = (seconds / 60) % 60;
-const hours = Math.floor((minutes / 60) % 24) ;
-const days = Math.floor((hours / 24) % 24);
+const milliseconds = timeFrame * 1000;
+const days = Math.floor(milliseconds / 1000 / 60 / 60 / 24);
+const hours = 
+
+
+const seconds = Math.floor(milliseconds / 1000);
+const minutes = Math.floor(seconds / 60);
+
+const days = Math.floor(hours / 24);
 
 const countDownElement = document.getElementById('countdown');
 

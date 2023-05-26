@@ -14,11 +14,15 @@
  const clock = setInterval(function(){
     const countDownGoal = new Date('May 26, 2023 09:30:00').getTime(); // get the timestamp (ms) between the assigned date and Jan 1 1970
     const realTime = new Date().getTime(); // get timestamp of the current time
+    
     let timeSpan = countDownGoal - realTime; //existing distance between the countDownGoal timestamp and the current timestamp
+    if(realTime > countDownGoal){
+        timeSpan = 0;
+    }
     const displayCountDown = convertToTime(timeSpan, clock); // initialized a variable that contains the function 
 
     const countDownElement = document.getElementById('countdown');
-
+    
     countDownElement.innerHTML = `<span>${displayCountDown}</span>`;
     }, 998);
     
